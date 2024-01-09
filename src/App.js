@@ -1,5 +1,8 @@
 import React, { useState } from "react";
 import "./App.css";
+import "bootstrap/dist/css/bootstrap.min.css";
+import "bootstrap/dist/js/bootstrap.bundle.min";
+import DisplayBoxes from "./DisplayBoxes";
 
 function App() {
   const [size, setSize] = useState("");
@@ -106,6 +109,7 @@ function App() {
       </div>
 
       {/* displaying the stack */}
+      <DisplayBoxes stack={stack} />
     </div>
   );
 }
