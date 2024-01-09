@@ -33,7 +33,7 @@ function App() {
       }
       array.unshift(array1);
     }
-    setStack([...stack, array]);
+    setStack(array);
     setLimit(destructureLength * destructureHeight * destructureWidth);
   };
 
@@ -42,42 +42,44 @@ function App() {
       window.alert("Too many boxes to drop in this stack");
     } else {
       let droppedNo = 0;
+
+      let reversedStack = [];
       console.log(stack, "stack");
-      let reversedStack = stack.reverse();
-      console.log(reversedStack, "reverse");
-      if (Number(droppedNo) < Number(dropNo)) {
-        for (let i = 0; i < reversedStack.length; i++) {
-          if (Number(droppedNo) < Number(dropNo)) {
-            const parent = reversedStack[i];
-            for (let j = 0; j < parent.length; j++) {
-              if (Number(droppedNo) < Number(dropNo)) {
-                const child = parent[j];
-                for (let k = 0; k < child.length; k++) {
-                  const grandChild = child[k];
-                  if (Number(droppedNo) < Number(dropNo)) {
-                    for (let l = 0; l < grandChild.length; l++) {
-                      if (Number(droppedNo) < Number(dropNo)) {
-                        let block = grandChild[l];
-                        if (block.occupied === false) {
-                          droppedNo = droppedNo + 1;
-                          block.occupied = true;
-                        }
-                      }
-                    }
-                  }
-                }
-              }
-            }
-          }
-        }
+      for (let i = stack.length - 1; i >= 0; i--) {
+        reversedStack.push(stack[i]);
       }
-      // console.log(reversedStack, "before");
+      console.log(reversedStack, "reverse");
+      // if (Number(droppedNo) < Number(dropNo)) {
+      //   for (let i = 0; i < reversedStack.length; i++) {
+      //     if (Number(droppedNo) < Number(dropNo)) {
+      //       const parent = reversedStack[i];
+      //       for (let j = 0; j < parent.length; j++) {
+      //         if (Number(droppedNo) < Number(dropNo)) {
+      //           const child = parent[j];
+      //           for (let k = 0; k < child.length; k++) {
+      //             const grandChild = child[k];
+      //             if (Number(droppedNo) < Number(dropNo)) {
+      //               for (let l = 0; l < grandChild.length; l++) {
+      //                 if (Number(droppedNo) < Number(dropNo)) {
+      //                   let block = grandChild[l];
+      //                   if (block.occupied === false) {
+      //                     droppedNo = droppedNo + 1;
+      //                     block.occupied = true;
+      //                   }
+      //                 }
+      //               }
+      //             }
+      //           }
+      //         }
+      //       }
+      //     }
+      //   }
+      // }
       // const finalReverse = reversedStack.reverse();
-      // console.log(finalReverse, "after");
       // setStack(finalReverse);
     }
   };
-
+  console.log(stack, "stack");
   return (
     <div className="App">
       <div>
@@ -98,7 +100,7 @@ function App() {
       </div>
 
       <br />
-      <DisplayBoxes stack={stack} />
+      {/* <DisplayBoxes data={stack} /> */}
       <div>
         <h1>Drop Box</h1>
         <label htmlFor="size">Number of boxes to drop</label>
@@ -115,8 +117,6 @@ function App() {
           Save
         </button>
       </div>
-
-     
     </div>
   );
 }

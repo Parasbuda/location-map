@@ -1,23 +1,15 @@
 import React, { useEffect, useState } from "react";
 import "./displayBoxes.css";
 
-const DisplayBoxes = ({ stack }) => {
-<<<<<<< HEAD
-  const [totalContainers, setTotalContainers] = useState(0);
-  const [rowCount, setRowCount] = useState(0);
-  const [columnCount, setColumnCount] = useState(0);
-=======
+const DisplayBoxes = ({ data }) => {
+  console.log(data, "data");
   const [totalContainers, setTotalContainers] = useState([]);
->>>>>>> dd7e723ba1df9909c2f00ba0a406504ca61201dd
-
   useEffect(() => {
-    if (stack?.length > 0) {
-      setTotalContainers(stack[0]);
-    }
-  }, [stack]);
+    setTotalContainers(data[0] ? data[0] : []);
+  }, [data]);
   return (
     <>
-      {stack?.length > 0 ? (
+      {data?.length > 0 ? (
         <div className="display-boxes-wrapper">
           <div className="row m-0 total-container-row">
             {totalContainers.map((container, index) => {
