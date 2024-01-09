@@ -29,9 +29,9 @@ function App() {
         for (let k = 0; k < destructureHeight; k++) {
           array2.push({ position: `${i}${j}${k}`, occupied: false });
         }
-        array1.push(array2);
+        array1.unshift(array2);
       }
-      array.push(array1);
+      array.unshift(array1);
     }
     setStack([...stack, array]);
     setLimit(destructureLength * destructureHeight * destructureWidth);
@@ -42,20 +42,27 @@ function App() {
       window.alert("Too many boxes to drop in this stack");
     } else {
       let droppedNo = 0;
+      console.log(stack, "stack");
       let reversedStack = stack.reverse();
+      console.log(reversedStack, "reverse");
       if (Number(droppedNo) < Number(dropNo)) {
         for (let i = 0; i < reversedStack.length; i++) {
           if (Number(droppedNo) < Number(dropNo)) {
             const parent = reversedStack[i];
-            for (let j = 0; j < parent; j++) {
+            for (let j = 0; j < parent.length; j++) {
               if (Number(droppedNo) < Number(dropNo)) {
                 const child = parent[j];
                 for (let k = 0; k < child.length; k++) {
+                  const grandChild = child[k];
                   if (Number(droppedNo) < Number(dropNo)) {
-                    let block = child[k];
-                    if (block.occupied === false) {
-                      droppedNo = droppedNo + 1;
-                      block.occupied = true;
+                    for (let l = 0; l < grandChild.length; l++) {
+                      if (Number(droppedNo) < Number(dropNo)) {
+                        let block = grandChild[l];
+                        if (block.occupied === false) {
+                          droppedNo = droppedNo + 1;
+                          block.occupied = true;
+                        }
+                      }
                     }
                   }
                 }
@@ -64,10 +71,10 @@ function App() {
           }
         }
       }
-
-      console.log(reversedStack, "up");
-      // const finalReverse = updatedStack.reverse();
-      setStack(reversedStack);
+      // console.log(reversedStack, "before");
+      // const finalReverse = reversedStack.reverse();
+      // console.log(finalReverse, "after");
+      // setStack(finalReverse);
     }
   };
 

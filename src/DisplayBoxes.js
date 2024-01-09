@@ -2,15 +2,9 @@ import React, { useEffect, useState } from "react";
 import "./displayBoxes.css";
 
 const DisplayBoxes = ({ stack }) => {
-  console.log(stack, "stack");
-  console.log(stack[0]?.[0]?.[0], "sdjhfskjdfh");
   const [totalContainers, setTotalContainers] = useState(0);
   const [rowCount, setRowCount] = useState(0);
   const [columnCount, setColumnCount] = useState(0);
-
-  console.log(totalContainers, "main");
-  console.log(rowCount, "row count");
-  console.log(columnCount, "column count");
 
   useEffect(() => {
     if (stack?.length > 0) {
@@ -19,7 +13,6 @@ const DisplayBoxes = ({ stack }) => {
       setColumnCount(stack[0]?.[0]?.[0]);
     }
   }, [stack]);
-
   return (
     <>
       {stack?.length > 0 ? (
