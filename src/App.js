@@ -1,5 +1,8 @@
 import React, { useState } from "react";
 import "./App.css";
+import "bootstrap/dist/css/bootstrap.min.css";
+import "bootstrap/dist/js/bootstrap.bundle.min";
+import DisplayBoxes from "./DisplayBoxes";
 
 function App() {
   const [size, setSize] = useState("");
@@ -26,7 +29,7 @@ function App() {
     setStack([...stack, array]);
     setLimit(length * height * width);
   };
-  console.log(stack,"as")
+
   return (
     <div className="App">
       <h1>Location Mapping</h1>
@@ -45,8 +48,7 @@ function App() {
       </button>
 
       <br />
-
-      {/* displaying the stack */}
+      <DisplayBoxes stack={stack} />
     </div>
   );
 }
