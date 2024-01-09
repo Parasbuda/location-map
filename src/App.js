@@ -98,6 +98,7 @@ function App() {
       </div>
 
       <br />
+      <DisplayBoxes stack={stack} />
       <div>
         <h1>Drop Box</h1>
         <label htmlFor="size">Number of boxes to drop</label>
@@ -115,8 +116,7 @@ function App() {
         </button>
       </div>
 
-      {/* displaying the stack */}
-      <DisplayBoxes stack={stack} />
+     
     </div>
   );
 }

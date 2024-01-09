@@ -5,15 +5,24 @@
 }
 
 .display-boxes-wrapper .total-container-row {
-  gap: 6px;
+  gap: 10px;
   justify-content: center;
 }
 
-.display-boxes-wrapper .total-container-row .total-container {
-  border: 1px solid #000;
-}
 .display-boxes-wrapper .total-container-row .total-container .matrix-cell {
   border: 1px solid #aaa;
   padding: 10px;
   text-align: center;
+}
+
+.display-boxes-wrapper
+  .total-container-row
+  .total-container
+  .matrix-cell.occupied {
+  border: 1px solid #aaa;
+  padding: 10px;
+  text-align: center;
+  background: tomato;
+  color: #fff;
+  font-size: 1.2rem;
 }
